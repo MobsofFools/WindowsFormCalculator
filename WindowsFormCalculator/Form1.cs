@@ -42,37 +42,16 @@ namespace WindowsFormCalculator
             {
                 txtInput.Text = txtInput.Text + "1";
             }
-            //if(txtEquation.Text.Contains("Result"))
-            //{
-            //    txtEquation.Text = "";
-            //    txtInput.Text = "1";
-            //}
-            //else if (txtInput.Text.Contains("^"))
-            //{
-            //    PowerCalculation("1");
-            //}
-            //else if (txtInput.Text == "0" && txtInput.Text != null)
-            //{
-            //    txtInput.Text = "1";
-            //}
-            //else
-            //{
-            //    txtInput.Text = txtInput.Text + "1";
-            //}
         }
 
         private void btn2_Click(object sender, EventArgs e)
         {
-            if (txtEquation.Text.Contains("Result"))
+            if (Validator.containsResult(txtEquation) == true)
             {
-                txtEquation.Text = "";
+                ClearFields();
                 txtInput.Text = "2";
             }
-            else if (txtInput.Text.Contains("^"))
-            {
-                PowerCalculation("2");
-            }
-            else if (txtInput.Text == "0" && txtInput.Text != null)
+            else if (Validator.isFresh(txtInput, txtEquation))
             {
                 txtInput.Text = "2";
             }
@@ -85,16 +64,12 @@ namespace WindowsFormCalculator
 
         private void btn3_Click(object sender, EventArgs e)
         {
-            if (txtEquation.Text.Contains("Result"))
+            if (Validator.containsResult(txtEquation) == true)
             {
-                txtEquation.Text = "";
+                ClearFields();
                 txtInput.Text = "3";
             }
-            else if (txtInput.Text.Contains("^"))
-            {
-                PowerCalculation("3");
-            }
-            else if (txtInput.Text == "0" && txtInput.Text != null)
+            else if (Validator.isFresh(txtInput, txtEquation))
             {
                 txtInput.Text = "3";
             }
@@ -106,16 +81,12 @@ namespace WindowsFormCalculator
 
         private void btn4_Click(object sender, EventArgs e)
         {
-            if (txtEquation.Text.Contains("Result"))
+            if (Validator.containsResult(txtEquation) == true)
             {
-                txtEquation.Text = "";
+                ClearFields();
                 txtInput.Text = "4";
             }
-            else if (txtInput.Text.Contains("^"))
-            {
-                PowerCalculation("4");
-            }
-            else if (txtInput.Text == "0" && txtInput.Text != null)
+            else if (Validator.isFresh(txtInput, txtEquation))
             {
                 txtInput.Text = "4";
             }
@@ -128,16 +99,12 @@ namespace WindowsFormCalculator
 
         private void btn5_Click(object sender, EventArgs e)
         {
-            if (txtEquation.Text.Contains("Result"))
+            if (Validator.containsResult(txtEquation) == true)
             {
-                txtEquation.Text = "";
+                ClearFields();
                 txtInput.Text = "5";
             }
-            else if (txtInput.Text.Contains("^"))
-            {
-                PowerCalculation("5");
-            }
-            else if (txtInput.Text == "0" && txtInput.Text != null)
+            else if (Validator.isFresh(txtInput, txtEquation))
             {
                 txtInput.Text = "5";
             }
@@ -149,16 +116,12 @@ namespace WindowsFormCalculator
 
         private void btn6_Click(object sender, EventArgs e)
         {
-            if (txtEquation.Text.Contains("Result"))
+            if (Validator.containsResult(txtEquation) == true)
             {
-                txtEquation.Text = "";
+                ClearFields();
                 txtInput.Text = "6";
             }
-            else if (txtInput.Text.Contains("^"))
-            {
-                PowerCalculation("6");
-            }
-            else if (txtInput.Text == "0" && txtInput.Text != null)
+            else if (Validator.isFresh(txtInput, txtEquation))
             {
                 txtInput.Text = "6";
             }
@@ -170,16 +133,12 @@ namespace WindowsFormCalculator
 
         private void btn7_Click(object sender, EventArgs e)
         {
-            if (txtEquation.Text.Contains("Result"))
+            if (Validator.containsResult(txtEquation) == true)
             {
-                txtEquation.Text = "";
+                ClearFields();
                 txtInput.Text = "7";
             }
-            else if (txtInput.Text.Contains("^"))
-            {
-                PowerCalculation("7");
-            }
-            else if (txtInput.Text == "0" && txtInput.Text != null)
+            else if (Validator.isFresh(txtInput, txtEquation))
             {
                 txtInput.Text = "7";
             }
@@ -191,16 +150,12 @@ namespace WindowsFormCalculator
 
         private void btn8_Click(object sender, EventArgs e)
         {
-            if (txtEquation.Text.Contains("Result"))
+            if (Validator.containsResult(txtEquation) == true)
             {
-                txtEquation.Text = "";
+                ClearFields();
                 txtInput.Text = "8";
             }
-            else if (txtInput.Text.Contains("^"))
-            {
-                PowerCalculation("8");
-            }
-            else if (txtInput.Text == "0" && txtInput.Text != null)
+            else if (Validator.isFresh(txtInput, txtEquation))
             {
                 txtInput.Text = "8";
             }
@@ -212,16 +167,12 @@ namespace WindowsFormCalculator
 
         private void btn9_Click(object sender, EventArgs e)
         {
-            if (txtEquation.Text.Contains("Result"))
+            if (Validator.containsResult(txtEquation) == true)
             {
-                txtEquation.Text = "";
+                ClearFields();
                 txtInput.Text = "9";
             }
-            else if (txtInput.Text.Contains("^"))
-            {
-                PowerCalculation("9");
-            }
-            else if (txtInput.Text == "0" && txtInput.Text != null)
+            else if (Validator.isFresh(txtInput, txtEquation))
             {
                 txtInput.Text = "9";
             }
@@ -233,16 +184,12 @@ namespace WindowsFormCalculator
 
         private void btn0_Click(object sender, EventArgs e)
         {
-            if (txtEquation.Text.Contains("Result"))
+            if (Validator.containsResult(txtEquation) == true)
             {
-                txtEquation.Text = "";
+                ClearFields();
                 txtInput.Text = "0";
             }
-            else if (txtInput.Text.Contains("^"))
-            {
-                PowerCalculation("0");
-            }
-            else if (txtInput.Text == "0" && txtInput.Text != null)
+            else if (Validator.isFresh(txtInput, txtEquation))
             {
                 txtInput.Text = "0";
             }
@@ -254,7 +201,10 @@ namespace WindowsFormCalculator
 
         private void btndot_Click(object sender, EventArgs e)
         {
-            if (txtInput.Text == "0" && txtInput.Text != null)
+            if (Validator.endswithRightPara(txtInput) == false)
+            {
+            }
+            else if (Validator.isEmpty(txtInput) == true)
             {
                 txtInput.Text = "0.";
             }
@@ -266,7 +216,11 @@ namespace WindowsFormCalculator
 
         private void btnplumi_Click(object sender, EventArgs e)
         {
-            if(txtInput.Text.StartsWith("-"))
+            if (Validator.containsResult(txtEquation) == true)
+            {
+                ClearFields();
+            }
+            else if (txtInput.Text.StartsWith("-"))
             {
                 txtInput.Text = txtInput.Text.Substring(1);
             }
@@ -283,7 +237,11 @@ namespace WindowsFormCalculator
 
         private void btnDiv_Click(object sender, EventArgs e)
         {
-            if (txtInput.Text.StartsWith("(") && txtInput.Text.EndsWith(")"))
+            if (Validator.containsResult(txtEquation) == true)
+            {
+                ClearFields();
+            }
+            else if (txtInput.Text.StartsWith("(") && txtInput.Text.EndsWith(")"))
             {
                 txtEquation.Text = txtEquation.Text + txtInput.Text + "/";
                 txtInput.Text = "";
@@ -311,7 +269,11 @@ namespace WindowsFormCalculator
 
         private void btnMulti_Click(object sender, EventArgs e)
         {
-            if (txtInput.Text.StartsWith("(") && txtInput.Text.EndsWith(")"))
+            if (Validator.containsResult(txtEquation) == true)
+            {
+                ClearFields();
+            }
+            else if(txtInput.Text.StartsWith("(") && txtInput.Text.EndsWith(")"))
             {
                 txtEquation.Text = txtEquation.Text + txtInput.Text + "*";
                 txtInput.Text = "";
@@ -339,7 +301,11 @@ namespace WindowsFormCalculator
 
         private void btnSub_Click(object sender, EventArgs e)
         {
-            if (txtInput.Text.StartsWith("(") && txtInput.Text.EndsWith(")"))
+            if (Validator.containsResult(txtEquation) == true)
+            {
+                ClearFields();
+            }
+            else if (txtInput.Text.StartsWith("(") && txtInput.Text.EndsWith(")"))
             {
                 txtEquation.Text = txtEquation.Text + txtInput.Text + "-";
                 txtInput.Text = "";
@@ -366,7 +332,11 @@ namespace WindowsFormCalculator
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
-            if (txtInput.Text.StartsWith("(") && txtInput.Text.EndsWith(")"))
+            if (Validator.containsResult(txtEquation) == true)
+            {
+                ClearFields();
+            }
+            else if (txtInput.Text.StartsWith("(") && txtInput.Text.EndsWith(")"))
             {
                 txtEquation.Text = txtEquation.Text + txtInput.Text + "+";
                 txtInput.Text = "";
@@ -396,7 +366,12 @@ namespace WindowsFormCalculator
         {
             bool isDigit = Char.IsDigit(txtInput.Text.Last());
             bool isPar = txtInput.Text.EndsWith(")");
-            if (txtInput.Text == "0" && txtEquation.Text =="")
+
+            if (Validator.containsResult(txtEquation) == true)
+            {
+                ClearFields();
+            }
+            else if (txtInput.Text == "0" && txtEquation.Text =="")
             {
                 txtInput.Text = "(";
             }
@@ -418,16 +393,23 @@ namespace WindowsFormCalculator
 
         private void btnParRight_Click(object sender, EventArgs e)
         {
-            txtInput.Text = txtInput.Text + ")";
-        }
-
-        private void btnPow_Click(object sender, EventArgs e)
-        {
-            if (txtInput.Text != null)
+            if (Validator.containsResult(txtEquation) == true)
             {
-                txtInput.Text = txtInput.Text + "^";
+                ClearFields();
+            }
+            else
+            {
+                txtInput.Text = txtInput.Text + ")";
             }
         }
+        //Commented out on Designer
+        //private void btnPow_Click(object sender, EventArgs e)
+        //{
+        //    if (txtInput.Text != null)
+        //    {
+        //        txtInput.Text = txtInput.Text + "^";
+        //    }
+        //}
         double final;
         public double PowerCalculation(string power)
         {
@@ -451,6 +433,16 @@ namespace WindowsFormCalculator
             txtEquation.Text = equation + Environment.NewLine + Environment.NewLine + "Result:   " + calculation.ToString();
 
         }
+        //public double Calculate(string expression)
+        //{
+        //    char[] delimiterChars = { '+', '-', '*', '/' };
+        //    double answer;
+        //    if (Validator.containsPower(expression))
+        //    {
+        //        expression.IndexOf('^');
+        //    }
+        //    return answer;
+        //}
         public double Evaluate(string expression)
         {
             try

@@ -30,10 +30,10 @@ namespace WindowsFormCalculator
             return isValid;
         }
 
-        public static bool containsPower(TextBox inputBox)
+        public static bool containsPower(string expression)
         {
             bool isValid = false;
-            if (inputBox.Text.Contains("^"))
+            if (expression.Contains("^"))
             {
                 isValid = true;
             }
@@ -58,6 +58,15 @@ namespace WindowsFormCalculator
             }
             return isValid;
              
+        }
+        public static bool endswithRightPara(TextBox inputBox)
+        {
+            bool isValid = false;
+            if (inputBox.Text.EndsWith(")"))
+            {
+                isValid = true;
+            }
+            return isValid;
         }
 
     }

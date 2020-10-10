@@ -296,7 +296,7 @@
             this.btnPow.TabIndex = 20;
             this.btnPow.Text = "^";
             this.btnPow.UseVisualStyleBackColor = true;
-            this.btnPow.Click += new System.EventHandler(this.btnPow_Click);
+            //this.btnPow.Click += new System.EventHandler(this.btnPow_Click);
             // 
             // btnSqrt
             // 
