@@ -29,16 +29,12 @@ namespace WindowsFormCalculator
 
         private void btn1_Click(object sender, EventArgs e)
         {
-            if(txtEquation.Text.Contains("Result"))
+            if (Validator.containsResult(txtEquation) == true)
             {
-                txtEquation.Text = "";
+                ClearFields();
                 txtInput.Text = "1";
             }
-            else if (txtInput.Text.Contains("^"))
-            {
-                PowerCalculation("1");
-            }
-            else if (txtInput.Text == "0" && txtInput.Text != null)
+            else if(Validator.isFresh(txtInput,txtEquation))
             {
                 txtInput.Text = "1";
             }
@@ -46,6 +42,23 @@ namespace WindowsFormCalculator
             {
                 txtInput.Text = txtInput.Text + "1";
             }
+            //if(txtEquation.Text.Contains("Result"))
+            //{
+            //    txtEquation.Text = "";
+            //    txtInput.Text = "1";
+            //}
+            //else if (txtInput.Text.Contains("^"))
+            //{
+            //    PowerCalculation("1");
+            //}
+            //else if (txtInput.Text == "0" && txtInput.Text != null)
+            //{
+            //    txtInput.Text = "1";
+            //}
+            //else
+            //{
+            //    txtInput.Text = txtInput.Text + "1";
+            //}
         }
 
         private void btn2_Click(object sender, EventArgs e)
@@ -270,16 +283,6 @@ namespace WindowsFormCalculator
 
         private void btnDiv_Click(object sender, EventArgs e)
         {
-            bool exists;
-            if (txtInput.Text.Length > 0)
-            {
-                exists = true;
-            }
-            else
-            {
-                exists = false;
-            }
-
             if (txtInput.Text.StartsWith("(") && txtInput.Text.EndsWith(")"))
             {
                 txtEquation.Text = txtEquation.Text + txtInput.Text + "/";
@@ -290,15 +293,15 @@ namespace WindowsFormCalculator
             {
                 txtInput.Text = txtInput.Text + "/";
             }
-            //else if (txtEquation.Text.EndsWith("/") || txtEquation.Text.EndsWith("-") || txtEquation.Text.EndsWith("+") || txtEquation.Text.EndsWith("*") && txtInput.Text == "")  
-            //{
-            //    operate = txtEquation.Text;
-            //    operate = operate.Substring(0, operate.Length - 1);
-            //    Console.WriteLine(operate);
-            //    txtEquation.Text = operate + "/";
-            //    operate = string.Empty;
-            //}
-            else if (exists = true)
+            else if (txtEquation.Text.EndsWith("/") || txtEquation.Text.EndsWith("-") || txtEquation.Text.EndsWith("+") || txtEquation.Text.EndsWith("*") && txtInput.Text == "")
+            {
+                operate = txtEquation.Text;
+                operate = operate.Substring(0, operate.Length - 1);
+                Console.WriteLine(operate);
+                txtEquation.Text = operate + "/";
+                operate = string.Empty;
+            }
+            else
             {
                 txtEquation.Text = txtEquation.Text + txtInput.Text + "/";
                 Console.WriteLine("working");
