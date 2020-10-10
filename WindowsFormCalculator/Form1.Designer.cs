@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtInput = new System.Windows.Forms.TextBox();
             this.btn1 = new System.Windows.Forms.Button();
             this.btn2 = new System.Windows.Forms.Button();
             this.btn3 = new System.Windows.Forms.Button();
@@ -57,16 +57,20 @@
             this.btnLog = new System.Windows.Forms.Button();
             this.btnNatLog = new System.Windows.Forms.Button();
             this.btne = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtEquation = new System.Windows.Forms.TextBox();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtInput
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 14);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(416, 178);
-            this.textBox1.TabIndex = 0;
+            this.txtInput.Location = new System.Drawing.Point(4, 143);
+            this.txtInput.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtInput.Multiline = true;
+            this.txtInput.Name = "txtInput";
+            this.txtInput.ReadOnly = true;
+            this.txtInput.Size = new System.Drawing.Size(405, 33);
+            this.txtInput.TabIndex = 0;
             // 
             // btn1
             // 
@@ -380,11 +384,30 @@
             this.btne.UseVisualStyleBackColor = true;
             this.btne.Click += new System.EventHandler(this.btne_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtEquation);
+            this.panel1.Controls.Add(this.txtInput);
+            this.panel1.Location = new System.Drawing.Point(13, 13);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(413, 181);
+            this.panel1.TabIndex = 29;
+            // 
+            // txtEquation
+            // 
+            this.txtEquation.Location = new System.Drawing.Point(4, 4);
+            this.txtEquation.Multiline = true;
+            this.txtEquation.Name = "txtEquation";
+            this.txtEquation.ReadOnly = true;
+            this.txtEquation.Size = new System.Drawing.Size(405, 131);
+            this.txtEquation.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 587);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btne);
             this.Controls.Add(this.btnNatLog);
             this.Controls.Add(this.btnLog);
@@ -413,20 +436,20 @@
             this.Controls.Add(this.btn3);
             this.Controls.Add(this.btn2);
             this.Controls.Add(this.btn1);
-            this.Controls.Add(this.textBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.Button btn1;
         private System.Windows.Forms.Button btn2;
         private System.Windows.Forms.Button btn3;
@@ -455,6 +478,8 @@
         private System.Windows.Forms.Button btnLog;
         private System.Windows.Forms.Button btnNatLog;
         private System.Windows.Forms.Button btne;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtEquation;
     }
 }
 
