@@ -17,7 +17,7 @@ namespace WindowsFormCalculator
         double calculation;
         string operate = string.Empty;
         double result;
-        double e = 2.71828;
+        readonly double valuee = 2.71828;
 
         public Form1()
         {
@@ -27,177 +27,72 @@ namespace WindowsFormCalculator
         {
             txtInput.Text = "0";
         }
-
-        private void btn1_Click(object sender, EventArgs e)
+        private void btnClick(string num)
         {
-            if (Validator.containsResult(txtEquation) == true)
+            if(Validator.containsResult(txtEquation) == true)
             {
                 ClearFields();
-                txtInput.Text = "1";
+                txtInput.Text = num;
             }
             else if(Validator.isFresh(txtInput,txtEquation))
             {
-                txtInput.Text = "1";
+                txtInput.Text = num;
             }
             else
             {
-                txtInput.Text = txtInput.Text + "1";
+                txtInput.Text = txtInput.Text + num;
             }
+        }
+
+        private void btn1_Click(object sender, EventArgs e)
+        {
+            btnClick("1");
         }
 
         private void btn2_Click(object sender, EventArgs e)
         {
-            if (Validator.containsResult(txtEquation) == true)
-            {
-                ClearFields();
-                txtInput.Text = "2";
-            }
-            else if (Validator.isFresh(txtInput, txtEquation))
-            {
-                txtInput.Text = "2";
-            }
-            else
-            {
-                txtInput.Text = txtInput.Text + "2";
-            }
-
+            btnClick("2");
         }
 
         private void btn3_Click(object sender, EventArgs e)
         {
-            if (Validator.containsResult(txtEquation) == true)
-            {
-                ClearFields();
-                txtInput.Text = "3";
-            }
-            else if (Validator.isFresh(txtInput, txtEquation))
-            {
-                txtInput.Text = "3";
-            }
-            else
-            {
-                txtInput.Text = txtInput.Text + "3";
-            }
+            btnClick("3");
         }
 
         private void btn4_Click(object sender, EventArgs e)
         {
-            if (Validator.containsResult(txtEquation) == true)
-            {
-                ClearFields();
-                txtInput.Text = "4";
-            }
-            else if (Validator.isFresh(txtInput, txtEquation))
-            {
-                txtInput.Text = "4";
-            }
-            else
-            {
-                txtInput.Text = txtInput.Text + "4";
-            }
+            btnClick("4");
 
         }
 
         private void btn5_Click(object sender, EventArgs e)
         {
-            if (Validator.containsResult(txtEquation) == true)
-            {
-                ClearFields();
-                txtInput.Text = "5";
-            }
-            else if (Validator.isFresh(txtInput, txtEquation))
-            {
-                txtInput.Text = "5";
-            }
-            else
-            {
-                txtInput.Text = txtInput.Text + "5";
-            }
+            btnClick("5");
         }
 
         private void btn6_Click(object sender, EventArgs e)
         {
-            if (Validator.containsResult(txtEquation) == true)
-            {
-                ClearFields();
-                txtInput.Text = "6";
-            }
-            else if (Validator.isFresh(txtInput, txtEquation))
-            {
-                txtInput.Text = "6";
-            }
-            else
-            {
-                txtInput.Text = txtInput.Text + "6";
-            }
+            btnClick("6");
         }
 
         private void btn7_Click(object sender, EventArgs e)
         {
-            if (Validator.containsResult(txtEquation) == true)
-            {
-                ClearFields();
-                txtInput.Text = "7";
-            }
-            else if (Validator.isFresh(txtInput, txtEquation))
-            {
-                txtInput.Text = "7";
-            }
-            else
-            {
-                txtInput.Text = txtInput.Text + "7";
-            }
+            btnClick("7");
         }
 
         private void btn8_Click(object sender, EventArgs e)
         {
-            if (Validator.containsResult(txtEquation) == true)
-            {
-                ClearFields();
-                txtInput.Text = "8";
-            }
-            else if (Validator.isFresh(txtInput, txtEquation))
-            {
-                txtInput.Text = "8";
-            }
-            else
-            {
-                txtInput.Text = txtInput.Text + "8";
-            }
+            btnClick("8");
         }
 
         private void btn9_Click(object sender, EventArgs e)
         {
-            if (Validator.containsResult(txtEquation) == true)
-            {
-                ClearFields();
-                txtInput.Text = "9";
-            }
-            else if (Validator.isFresh(txtInput, txtEquation))
-            {
-                txtInput.Text = "9";
-            }
-            else
-            {
-                txtInput.Text = txtInput.Text + "9";
-            }
+            btnClick("9");
         }
 
         private void btn0_Click(object sender, EventArgs e)
         {
-            if (Validator.containsResult(txtEquation) == true)
-            {
-                ClearFields();
-                txtInput.Text = "0";
-            }
-            else if (Validator.isFresh(txtInput, txtEquation))
-            {
-                txtInput.Text = "0";
-            }
-            else
-            {
-                txtInput.Text = txtInput.Text + "0";
-            }
+            btnClick("0");
         }
 
         private void btndot_Click(object sender, EventArgs e)
@@ -411,7 +306,7 @@ namespace WindowsFormCalculator
                 txtInput.Text = txtInput.Text + "^";
             }
         }
-        double final;
+        //double final;
         //public double PowerCalculation(string power)
         //{
         //    string expression;
@@ -531,16 +426,9 @@ namespace WindowsFormCalculator
 
         private void btne_Click(object sender, EventArgs e)
         {
-            //if (txtEquation.Text.EndsWith("+") || txtEquation.Text.EndsWith("-") ||
-            //    txtEquation.Text.EndsWith("*") || txtEquation.Text.EndsWith("/") && txtInput.Text == "")
-            //{
-            //    txtInput.Text = e.ToString();
-            //}
-            //else
-            // Default to multiplication
-            //{
-                txtInput.Text = e.ToString();
-            //}
+            
+            txtInput.Text = valuee.ToString();
+
         }
 
         private void btnNatLog_Click(object sender, EventArgs e)
