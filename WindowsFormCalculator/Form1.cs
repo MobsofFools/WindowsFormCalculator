@@ -282,7 +282,7 @@ namespace WindowsFormCalculator
         }
         private void CalcLog()
         {
-            string logpat = @"(log|ln)(\(\d+\))";
+            string logpat = @"(log|ln)(\(\d+\/\d+\)|\(\d+\))";
             double result = 0;
             while (txtEquation.Text.Contains("log") || txtEquation.Text.Contains("ln"))
             {
@@ -293,7 +293,8 @@ namespace WindowsFormCalculator
                 string match = m.Value;
                 match = match.Substring(parleft + 1);
                 match = match.Remove(match.Length - 1);
-                double calc = double.Parse(match);
+                double calc = Evaluate(match);
+
 
                 if (m.Value.Contains("log"))
                 {
