@@ -97,10 +97,10 @@ namespace WindowsFormCalculator
 
         private void btndot_Click(object sender, EventArgs e)
         {
-            if (Validator.endswithRightPara(txtInput) == false)
+            if (Validator.endswithRightPara(txtInput) == true)
             {
             }
-            else if (Validator.isEmpty(txtInput) == true)
+            else if (txtInput.Text == "0")
             {
                 txtInput.Text = "0.";
             }
@@ -141,11 +141,11 @@ namespace WindowsFormCalculator
             {
                 ClearFields();
             }
-            else if (Validator.containsLog(txtInput.Text) == true)
-            {
-                txtEquation.Text = txtEquation.Text + txtInput.Text + ")" + op;
-                clearInput();
-            }
+            //else if (Validator.containsLog(txtInput.Text) == true)
+            //{
+            //    txtEquation.Text = txtEquation.Text + txtInput.Text + ")" + op;
+            //    clearInput();
+            //}
             else if (Validator.startswithLeftPara(txtInput) == true && Validator.endswithRightPara(txtInput) == true) // If input contains (xx )
             {
                 txtEquation.Text = txtEquation.Text + op;
@@ -282,7 +282,7 @@ namespace WindowsFormCalculator
         }
         private void CalcLog()
         {
-            string logpat = @"(log|ln)(\(\d+\/\d+\)|\(\d+\))";
+            string logpat = @"(log|ln)(\(\d+\/\d+\)|\(\d+\)|\(\d+\.\d+\)|\(\d+\.\d\/\d+\.\d\))";
             double result = 0;
             while (txtEquation.Text.Contains("log") || txtEquation.Text.Contains("ln"))
             {
