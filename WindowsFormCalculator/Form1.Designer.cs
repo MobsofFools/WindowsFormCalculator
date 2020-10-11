@@ -59,6 +59,8 @@
             this.btne = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtEquation = new System.Windows.Forms.TextBox();
+            this.rbEquation = new System.Windows.Forms.RadioButton();
+            this.rbInput = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -397,6 +399,7 @@
             // 
             // txtEquation
             // 
+            this.txtEquation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEquation.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEquation.Location = new System.Drawing.Point(4, 4);
             this.txtEquation.Multiline = true;
@@ -406,12 +409,41 @@
             this.txtEquation.TabIndex = 1;
             this.txtEquation.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // rbEquation
+            // 
+            this.rbEquation.AutoSize = true;
+            this.rbEquation.BackColor = System.Drawing.Color.Transparent;
+            this.rbEquation.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbEquation.Location = new System.Drawing.Point(349, 252);
+            this.rbEquation.Margin = new System.Windows.Forms.Padding(0);
+            this.rbEquation.Name = "rbEquation";
+            this.rbEquation.Size = new System.Drawing.Size(17, 16);
+            this.rbEquation.TabIndex = 3;
+            this.rbEquation.TabStop = true;
+            this.rbEquation.UseVisualStyleBackColor = false;
+            // 
+            // rbInput
+            // 
+            this.rbInput.AutoSize = true;
+            this.rbInput.BackColor = System.Drawing.Color.Transparent;
+            this.rbInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbInput.Location = new System.Drawing.Point(349, 280);
+            this.rbInput.Margin = new System.Windows.Forms.Padding(0);
+            this.rbInput.Name = "rbInput";
+            this.rbInput.Size = new System.Drawing.Size(17, 16);
+            this.rbInput.TabIndex = 30;
+            this.rbInput.TabStop = true;
+            this.rbInput.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(442, 587);
+            this.Controls.Add(this.rbInput);
+            this.Controls.Add(this.rbEquation);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btne);
             this.Controls.Add(this.btnNatLog);
@@ -444,11 +476,13 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.ShowIcon = false;
+            this.Text = "Calculator";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -485,6 +519,8 @@
         private System.Windows.Forms.Button btne;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtEquation;
+        private System.Windows.Forms.RadioButton rbEquation;
+        private System.Windows.Forms.RadioButton rbInput;
     }
 }
 

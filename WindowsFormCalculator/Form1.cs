@@ -22,6 +22,7 @@ namespace WindowsFormCalculator
         public Form1()
         {
             InitializeComponent();
+            rbInput.Checked = true;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -231,7 +232,7 @@ namespace WindowsFormCalculator
             {
                 ClearFields();
             }
-            else
+            else if(txtInput.Text.Contains("("))
             {
                 txtInput.Text = txtInput.Text + ")";
             }
@@ -416,8 +417,8 @@ namespace WindowsFormCalculator
 
         public void ClearFields()
         {
-            this.txtInput.Text = "0";
-            this.txtEquation.Text = "";
+            txtInput.Text = "0";
+            txtEquation.Text = "";
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -426,8 +427,22 @@ namespace WindowsFormCalculator
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            txtInput.Text = txtInput.Text.Remove(txtInput.Text.Length - 1);
+            if (rbEquation.Checked == true)
+            {
+                if (Validator.isEmpty(txtEquation) == false)
+                { 
+                    txtEquation.Text = txtEquation.Text.Remove(txtEquation.Text.Length - 1);
+                }
+            }
+            else
+            {
+                if (Validator.isEmpty(txtInput) == false)
+                {
+                         txtInput.Text = txtInput.Text.Remove(txtInput.Text.Length - 1);
+                }
+            }            
         }
+
 
         private void btnSquare_Click(object sender, EventArgs e)
         {
@@ -455,5 +470,6 @@ namespace WindowsFormCalculator
                 txtInput.Text = Math.Sqrt(double.Parse(txtInput.Text)).ToString();
             }
         }
+
     }
 }

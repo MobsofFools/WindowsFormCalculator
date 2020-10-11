@@ -72,7 +72,7 @@ namespace WindowsFormCalculator
         public static bool startswithLeftPara(TextBox inputBox)
         {
             bool isValid = false;
-            if (inputBox.Text.StartsWith(""))
+            if (inputBox.Text.StartsWith("("))
             {
                 isValid = true;
             }
