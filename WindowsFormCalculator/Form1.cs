@@ -130,40 +130,50 @@ namespace WindowsFormCalculator
                 txtInput.Text = "(-" + txtInput.Text +")";
             }
         }
+        private void clearInput()
+        {
+            txtInput.Text = "";
+        }
 
         private void btnOperator(string op)
         {
-            if(Validator.containsResult(txtEquation) == true)
+            if (Validator.containsResult(txtEquation) == true)
             {
                 ClearFields();
             }
-            else if(Validator.startswithLeftPara(txtInput) == true && Validator.endswithRightPara(txtInput) == true) // If input contains (xx )
+            else if (Validator.containsLog(txtInput.Text) == true)
+            {
+                txtEquation.Text = txtEquation.Text + txtInput.Text + ")" + op;
+                clearInput();
+            }
+            else if (Validator.startswithLeftPara(txtInput) == true && Validator.endswithRightPara(txtInput) == true) // If input contains (xx )
             {
                 txtEquation.Text = txtEquation.Text + op;
-                txtInput.Text = "";
+                clearInput();
             }
-            else if(Validator.startswithLeftPara(txtInput) == true)
+            else if (Validator.startswithLeftPara(txtInput) == true)
             {
                 txtInput.Text = txtInput.Text + op;
             }
+
             else if(Validator.isEmpty(txtInput) == true && Validator.endsInOperator(txtEquation))
             {
                 operate = txtEquation.Text;
                 operate = operate.Substring(0, operate.Length - 1);
                 txtEquation.Text = operate + op;
                 operate = string.Empty;
-                txtInput.Text = "";
+                clearInput();
             }
             else if(Validator.endsInOperator(txtEquation) == true && Validator.isEmpty(txtInput) == false)
             {
                 txtEquation.Text = txtEquation.Text + txtInput.Text + op;
-                txtInput.Text = "";
+                clearInput();
             }
             else
             {
                 Console.WriteLine("wtf");
                 txtEquation.Text = txtEquation.Text + txtInput.Text + op;
-                txtInput.Text = "";
+                clearInput();
             }
         }
         private void btnDiv_Click(object sender, EventArgs e)
@@ -231,29 +241,23 @@ namespace WindowsFormCalculator
         {
             btnOperator("^");
         }
-        //double final;
-        //public double PowerCalculation(string power)
-        //{
-        //    string expression;
-        //    expression = txtInput.Text.Remove(txtInput.Text.Length -1); 
-        //    DataTable dt = new DataTable();
-        //    dt.Columns.Add("expression", typeof(string), expression);
-        //    DataRow row = dt.NewRow();
-        //    dt.Rows.Add(row);
-        //    final = Math.Pow(double.Parse((string)row["expression"]),double.Parse(power));
-        //    txtInput.Text = final.ToString();
-        //    return final;
-
-        //}
 
         private void btnenter_Click(object sender, EventArgs e)
         {
             txtEquation.Text = txtEquation.Text + txtInput.Text;
-            CalcPow();
+            // Need to Implement Bracket balancing check
+            if(Validator.containsPower(txtEquation.Text)==true)
+            {
+                CalcPow();
+            }
+            else if(Validator.containsLog(txtEquation.Text)==true)
+            {
+                CalcLog();
+            }
             equation = txtEquation.Text;
             calculation = Evaluate(equation);
             txtEquation.Text = equation + Environment.NewLine + Environment.NewLine + "Result:   " + calculation.ToString();
-            txtInput.Text = "";
+            clearInput();
 
         }
         private void CalcPow()
@@ -264,22 +268,44 @@ namespace WindowsFormCalculator
                 while (txtEquation.Text.Contains("^"))
                 {
                     Match m = Regex.Match(txtEquation.Text, pattern);
-                    Console.WriteLine("'{0}' found at position {1}", m.Value, m.Index);
                     int mIndex = m.Index;
                     int mLength = m.Value.Length;
-                    Console.WriteLine(m.Length);
                     int powind = m.Value.IndexOf("^");
                     double beforepow = double.Parse(m.Value.Substring(0, powind));
-                    Console.WriteLine(beforepow);
                     double afterpow = double.Parse(m.Value.Substring(powind + 1));
-                    Console.WriteLine(afterpow);
                     double calcpow = Math.Pow(beforepow, afterpow);
-                    Console.WriteLine(calcpow);
                     string test2 = txtEquation.Text;
                     test2 = test2.Remove(mIndex, mLength).Insert(mIndex, calcpow.ToString());
-                    Console.WriteLine(test2);
                     txtEquation.Text = test2;
                 }
+            }
+        }
+        private void CalcLog()
+        {
+            string logpat = @"(log|ln)(\(\d+\))";
+            double result = 0;
+            while (txtEquation.Text.Contains("log") || txtEquation.Text.Contains("ln"))
+            {
+                Match m = Regex.Match(txtEquation.Text, logpat);
+                int mIndex = m.Index;
+                int mLength = m.Value.Length;
+                int parleft = m.Value.IndexOf("(");
+                string match = m.Value;
+                match = match.Substring(parleft + 1);
+                match = match.Remove(match.Length - 1);
+                double calc = double.Parse(match);
+
+                if (m.Value.Contains("log"))
+                {
+                    result = Math.Log10(calc);
+                }
+                else if (m.Value.Contains("ln"))
+                {
+                    result = Math.Log(calc);
+                }
+                string replace = txtEquation.Text;
+                replace = replace.Remove(mIndex, mLength).Insert(mIndex, result.ToString());
+                txtEquation.Text = replace;
             }
         }
 
@@ -353,40 +379,38 @@ namespace WindowsFormCalculator
             txtInput.Text = valuee.ToString();
 
         }
-        private void CalcLog()
-        {
-            string logpat = @"(log | ln)";
-            if (txtEquation.Text.Contains("^"))
-            {
-                while (txtEquation.Text.Contains("^"))
-                {
-                    Match m = Regex.Match(txtEquation.Text, logpat);
-                    Console.WriteLine("'{0}' found at position {1}", m.Value, m.Index);
-                    int mIndex = m.Index;
-                    int mLength = m.Value.Length;
-                    Console.WriteLine(m.Length);
-                    int powind = m.Value.IndexOf("^");
-                    double beforepow = double.Parse(m.Value.Substring(0, powind));
-                    Console.WriteLine(beforepow);
-                    double afterpow = double.Parse(m.Value.Substring(powind + 1));
-                    Console.WriteLine(afterpow);
-                    double calcpow = Math.Pow(beforepow, afterpow);
-                    Console.WriteLine(calcpow);
-                    string test2 = txtEquation.Text;
-                    test2 = test2.Remove(mIndex, mLength).Insert(mIndex, calcpow.ToString());
-                    Console.WriteLine(test2);
-                    txtEquation.Text = test2;
-                }
-            }
-        }
+        
 
         private void btnNatLog_Click(object sender, EventArgs e)
         {
+            if (Validator.containsResult(txtEquation) == true)
+            {
+                ClearFields();
+            }
+            else if(Validator.isEmpty(txtInput) == true || txtInput.Text == "0")
+            {
+                txtInput.Text = "ln(";
+            }
+            else if(Validator.isEmpty(txtInput) == false)
+            {
+                txtInput.Text = "ln(" + txtInput.Text;
+            }
         }
 
         private void btnLog_Click(object sender, EventArgs e)
         {
-
+            if (Validator.containsResult(txtEquation) == true)
+            {
+                ClearFields();
+            }
+            else if (Validator.isEmpty(txtInput) == true || txtInput.Text == "0")
+            {
+                txtInput.Text = "log(";
+            }
+            else if (Validator.isEmpty(txtInput) == false)
+            {
+                txtInput.Text = "log(" + txtInput.Text;
+            }
         }
 
         public void ClearFields()

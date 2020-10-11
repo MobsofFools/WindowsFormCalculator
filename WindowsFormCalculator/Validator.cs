@@ -40,6 +40,16 @@ namespace WindowsFormCalculator
             return isValid;
         }
 
+        public static bool containsLog(string expression)
+        {
+            bool isValid = false;
+            if (expression.Contains("log") || expression.Contains("ln"))
+            {
+                isValid = true;
+            }
+            return isValid;
+        }
+
         public static bool containsResult(TextBox inputBox)
         {
             bool isValid = false;
@@ -62,7 +72,7 @@ namespace WindowsFormCalculator
         public static bool startswithLeftPara(TextBox inputBox)
         {
             bool isValid = false;
-            if (inputBox.Text.StartsWith("("))
+            if (inputBox.Text.StartsWith(""))
             {
                 isValid = true;
             }

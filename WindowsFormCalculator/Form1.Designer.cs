@@ -358,7 +358,6 @@
             // 
             // btnLog
             // 
-            this.btnLog.Enabled = false;
             this.btnLog.Location = new System.Drawing.Point(216, 200);
             this.btnLog.Name = "btnLog";
             this.btnLog.Size = new System.Drawing.Size(67, 44);
@@ -369,7 +368,6 @@
             // 
             // btnNatLog
             // 
-            this.btnNatLog.Enabled = false;
             this.btnNatLog.Location = new System.Drawing.Point(141, 200);
             this.btnNatLog.Name = "btnNatLog";
             this.btnNatLog.Size = new System.Drawing.Size(67, 44);
