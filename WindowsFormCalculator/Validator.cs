@@ -59,6 +59,15 @@ namespace WindowsFormCalculator
             return isValid;
              
         }
+        public static bool startswithLeftPara(TextBox inputBox)
+        {
+            bool isValid = false;
+            if (inputBox.Text.StartsWith("("))
+            {
+                isValid = true;
+            }
+            return isValid;
+        }
         public static bool endswithRightPara(TextBox inputBox)
         {
             bool isValid = false;

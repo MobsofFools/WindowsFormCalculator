@@ -64,6 +64,7 @@
             // 
             // txtInput
             // 
+            this.txtInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtInput.Location = new System.Drawing.Point(4, 143);
             this.txtInput.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtInput.Multiline = true;
@@ -71,6 +72,7 @@
             this.txtInput.ReadOnly = true;
             this.txtInput.Size = new System.Drawing.Size(405, 33);
             this.txtInput.TabIndex = 0;
+            this.txtInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btn1
             // 
@@ -356,6 +358,7 @@
             // 
             // btnLog
             // 
+            this.btnLog.Enabled = false;
             this.btnLog.Location = new System.Drawing.Point(216, 200);
             this.btnLog.Name = "btnLog";
             this.btnLog.Size = new System.Drawing.Size(67, 44);
@@ -366,6 +369,7 @@
             // 
             // btnNatLog
             // 
+            this.btnNatLog.Enabled = false;
             this.btnNatLog.Location = new System.Drawing.Point(141, 200);
             this.btnNatLog.Name = "btnNatLog";
             this.btnNatLog.Size = new System.Drawing.Size(67, 44);
@@ -395,18 +399,21 @@
             // 
             // txtEquation
             // 
+            this.txtEquation.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEquation.Location = new System.Drawing.Point(4, 4);
             this.txtEquation.Multiline = true;
             this.txtEquation.Name = "txtEquation";
             this.txtEquation.ReadOnly = true;
-            this.txtEquation.Size = new System.Drawing.Size(405, 131);
+            this.txtEquation.Size = new System.Drawing.Size(405, 139);
             this.txtEquation.TabIndex = 1;
+            this.txtEquation.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 587);
+            this.BackColor = System.Drawing.Color.Silver;
+            this.ClientSize = new System.Drawing.Size(442, 587);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btne);
             this.Controls.Add(this.btnNatLog);
