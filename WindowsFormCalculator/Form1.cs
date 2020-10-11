@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -291,7 +292,7 @@ namespace WindowsFormCalculator
                 txtEquation.Text = operate + "*";
                 operate = string.Empty;
             }
-            else if (txtInput.Text != null)
+            else
             {
                 equation = txtInput.Text + "*";
                 txtEquation.Text = txtEquation.Text + equation;
@@ -403,27 +404,27 @@ namespace WindowsFormCalculator
             }
         }
         //Commented out on Designer
-        //private void btnPow_Click(object sender, EventArgs e)
-        //{
-        //    if (txtInput.Text != null)
-        //    {
-        //        txtInput.Text = txtInput.Text + "^";
-        //    }
-        //}
-        double final;
-        public double PowerCalculation(string power)
+        private void btnPow_Click(object sender, EventArgs e)
         {
-            string expression;
-            expression = txtInput.Text.Remove(txtInput.Text.Length -1); 
-            DataTable dt = new DataTable();
-            dt.Columns.Add("expression", typeof(string), expression);
-            DataRow row = dt.NewRow();
-            dt.Rows.Add(row);
-            final = Math.Pow(double.Parse((string)row["expression"]),double.Parse(power));
-            txtInput.Text = final.ToString();
-            return final;
-
+            if (txtInput.Text != null)
+            {
+                txtInput.Text = txtInput.Text + "^";
+            }
         }
+        double final;
+        //public double PowerCalculation(string power)
+        //{
+        //    string expression;
+        //    expression = txtInput.Text.Remove(txtInput.Text.Length -1); 
+        //    DataTable dt = new DataTable();
+        //    dt.Columns.Add("expression", typeof(string), expression);
+        //    DataRow row = dt.NewRow();
+        //    dt.Rows.Add(row);
+        //    final = Math.Pow(double.Parse((string)row["expression"]),double.Parse(power));
+        //    txtInput.Text = final.ToString();
+        //    return final;
+
+        //}
 
         private void btnenter_Click(object sender, EventArgs e)
         {
@@ -433,20 +434,43 @@ namespace WindowsFormCalculator
             txtEquation.Text = equation + Environment.NewLine + Environment.NewLine + "Result:   " + calculation.ToString();
 
         }
-        //public double Calculate(string expression)
-        //{
-        //    char[] delimiterChars = { '+', '-', '*', '/' };
-        //    double answer;
-        //    if (Validator.containsPower(expression))
-        //    {
-        //        expression.IndexOf('^');
-        //    }
-        //    return answer;
-        //}
+        private void CalcPow()
+        {
+            string pattern = @"(\([^)]*\)|\d+)\^(\([^)]*\)|\d+)";
+            if(txtEquation.Text.Contains("^"))
+            { 
+                while (txtEquation.Text.Contains("^"))
+                {
+                    Match m = Regex.Match(txtEquation.Text, pattern);
+                    //Console.WriteLine("'{0}' found at position {1}", m.Value, m.Index);
+                    int mIndex = m.Index;
+                    int mLength = m.Value.Length;
+                    //Console.WriteLine(m.Length);
+                    int powind = m.Value.IndexOf("^");
+                    double beforepow = double.Parse(m.Value.Substring(0, powind));
+                    //Console.WriteLine(beforepow);
+                    double afterpow = double.Parse(m.Value.Substring(powind + 1));
+                    //Console.WriteLine(afterpow);
+                    double calcpow = Math.Pow(beforepow, afterpow);
+                    //Console.WriteLine(calcpow);
+                    string test2 = txtEquation.Text;
+                    test2 = test2.Remove(mIndex, mLength).Insert(mIndex, calcpow.ToString());
+                    //Console.WriteLine(test2);
+                    txtEquation.Text = test2;
+                    //m = m.NextMatch();
+                }
+            }
+        }
+
         public double Evaluate(string expression)
         {
+            //txtEquation.Text = txtEquation.Text + txtInput.Text;
+            //txtInput.Text = "0";
+            CalcPow();
+
             try
             {
+                
                 bool isPar = expression.EndsWith(")");
                 bool isDigit = Char.IsDigit(expression.Last());
                 if (isDigit == false && isPar == false)
@@ -456,7 +480,7 @@ namespace WindowsFormCalculator
                     MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
                     DialogResult dresult;
                     dresult = MessageBox.Show(message, caption, buttons);
-                    if (dresult == System.Windows.Forms.DialogResult.OK)
+                    if (dresult == DialogResult.OK)
                     {
                         if (expression.Length < 1)
                         {
@@ -490,9 +514,9 @@ namespace WindowsFormCalculator
             catch (Exception e)
             {
                 MessageBox.Show("Error Has Occured");
-                ClearFields();
+                //ClearFields();
                 return 0;
-                
+
             }
         }
 
