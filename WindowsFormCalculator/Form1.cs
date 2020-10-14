@@ -199,31 +199,37 @@ namespace WindowsFormCalculator
 
         private void btnParLeft_Click(object sender, EventArgs e)
         {
-            bool isDigit = Char.IsDigit(txtInput.Text.Last());
-            bool isPar = txtInput.Text.EndsWith(")");
+            bool isDigit;
 
             if (Validator.containsResult(txtEquation) == true)
             {
                 ClearFields();
             }
-            else if (txtInput.Text == "0" && txtEquation.Text =="")
+
+            else if (Validator.isEmpty(txtInput)==false)
+            {
+                isDigit = Char.IsDigit(txtInput.Text.Last());
+                if (isDigit == true) //Default to multiplication if no operator is called
+                {
+                    txtEquation.Text = txtEquation.Text + txtInput.Text + "*";
+                    txtInput.Text = "(";
+                }
+                else if (txtInput.Text.EndsWith("("))
+                {
+                    txtInput.Text = txtInput.Text + "(";
+                }
+                else
+                {
+                    txtInput.Text = "(";
+                }
+            }
+            else
             {
                 txtInput.Text = "(";
             }
-            else if (txtEquation.Text.EndsWith("+") || txtEquation.Text.EndsWith("-") ||
-                txtEquation.Text.EndsWith("/") || txtEquation.Text.EndsWith("*") && txtInput.Text == "")
-            {
-                txtInput.Text = "(";
-            }
-            else if (txtInput.Text.EndsWith("("))
-            {
-                txtInput.Text = txtInput.Text + "(";
-            }
-            else if (isDigit == true) //Default to multiplication if no operator is called
-            {
-                txtEquation.Text = txtEquation.Text + txtInput.Text + "*";
-                txtInput.Text = "(";
-            }
+
+
+
         }
 
         private void btnParRight_Click(object sender, EventArgs e)
@@ -246,6 +252,7 @@ namespace WindowsFormCalculator
         private void btnenter_Click(object sender, EventArgs e)
         {
             txtEquation.Text = txtEquation.Text + txtInput.Text;
+            string display = txtEquation.Text;
             // Need to Implement Bracket balancing check
             if(Validator.containsPower(txtEquation.Text)==true)
             {
@@ -257,7 +264,7 @@ namespace WindowsFormCalculator
             }
             equation = txtEquation.Text;
             calculation = Evaluate(equation);
-            txtEquation.Text = equation + Environment.NewLine + Environment.NewLine + "Result:   " + calculation.ToString();
+            txtEquation.Text = display + Environment.NewLine + Environment.NewLine + "Result:   " + calculation.ToString();
             clearInput();
 
         }
