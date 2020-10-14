@@ -251,7 +251,7 @@ namespace WindowsFormCalculator
             {
                 CalcPow();
             }
-            else if(Validator.containsLog(txtEquation.Text)==true)
+            if(Validator.containsLog(txtEquation.Text)==true)
             {
                 CalcLog();
             }
